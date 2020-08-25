@@ -52,7 +52,8 @@
         for ($i = 1; $i < $argc; $i++) {
             echo "Argument #" . $i . " - " . $argv[$i] . "\n";
             $csvSource = $argv[$i];
-            $translationFile = replace_extension($csvSource, 'php');
+            $csvSource = '2020-08-24-messages.csv';
+            $translationFile = './processed-files/' . replace_extension($csvSource, 'php');
             // get rows from csv
             $rows = array_map('str_getcsv', file($csvSource));
             // strip out header
@@ -69,8 +70,7 @@
             fwrite($newFile, $processedCsv);
             fclose($newFile);
         }
-    }
-    else {
+    } else {
         echo "argc and argv disabled\n";
     }
 ?>
