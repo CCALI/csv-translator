@@ -4,7 +4,11 @@
 
     // helper functions
     function formatProp($row) {
-        return "\t\t'" . $row[1] . "'" . " => " . "'" . $row[2] . "',";
+        // escape inner single quotes like, ex: `can't` -> `can\'t`
+        $escapedValue = str_replace("'", "\'", $row[2]);
+        // TODO: possibly use addslashes as it escapes (', ", \, NUL)
+        // $escapedValue = addslashes($row[2]);
+        return "\t\t'" . $row[1] . "'" . " => " . "'" . $escapedValue . "',";
     }
 
     function processCSV($rows, $workingText) {
