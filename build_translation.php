@@ -10,8 +10,12 @@
     function processCSV($rows, $workingText) {
         // tracking for nested props
         $lastParentKey = '';
+        $numberOfRows = sizeof($rows);
+        // start loopCount at 0 because the header row is removed
+        $loopCount = 0;
 
         foreach($rows as $row) {
+            $loopCount++;
             // nested prop
             if ($row[0] !== "") {
                 $parentKey = $row[0];
@@ -31,6 +35,11 @@
                     $lastParentKey = '';
                 }
                 $workingText = $workingText . "\n  " . formatProp($row);
+            }
+            // edge case of final iteration being a nested array
+            if ($row[0] !== "" && $loopCount === $numberOfRows) {
+                // need to finish nested array string
+                $workingText = $workingText . "\n\t\t\t],";
             }
         }
 
