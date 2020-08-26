@@ -20,10 +20,9 @@
                     $lastParentKey = $parentKey;
                     // parent key line opens sub array
                     $workingText = $workingText . "\n\t\t\t'" . $parentKey . "' => " . "[";
-                } else {
-                    // adding to same sub array
-                    $workingText = $workingText . "\n\t\t  " . formatProp($row);
                 }
+                // adding to same sub array
+                $workingText = $workingText . "\n\t\t  " . formatProp($row);
             } else {
                 if ($lastParentKey !== '') {
                     // need to finish nested array string
