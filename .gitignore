@@ -1,9 +1,7 @@
 ##################################
-# A2J Files to skip
+# Script files
 ##################################
-/pdf/temp/
-/demo/guides/
-config_env.ini
+/processed-files/*
 
 #################
 ## VS Code
